@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head></h:head>
+<h:body>
+	<h:form id="f1">
+		<rich:editor toolbar="full" value="#{userBean.text}">
+
+			<a4j:ajax event="change" action="wyswietltekst" />
+
+		</rich:editor>
+
+
+
+		<rich:calendar size="30" maxlength="10" label="#{msg['startDate']}"
+			id="startDate" value="#{userBean.date}" datePattern="yyyy-MM-dd"
+			enableManualInput="true">
+
+			<a4j:ajax event="change" render="wyswietldate" />
+
+		</rich:calendar>
+
+
+		<h:inputText id="name1" value="#{userBean.name}">
+			<a4j:ajax event="keyup" render="name2"></a4j:ajax>
+
+		</h:inputText>
+		<br />
+		<h:outputText id="name2" value="#{userBean.name}"></h:outputText>
+		<br />
+		<h:outputText id="wyswietldate" value="#{userBean.date}"></h:outputText>
+		<br />
+		<h:outputText id="wyswietltekst" value="#{userBean.text}"></h:outputText>
+		<a4j:log></a4j:log>
+	</h:form>
+</h:body>
+</h:html>
